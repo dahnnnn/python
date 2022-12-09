@@ -64,11 +64,11 @@ def display_memory_game_screen():
     for idx, rect in enumerate(number_buttons, start=1):
         if hidden: # 숨김처리
             # 버튼 사각형 그리기
-            pygame.draw.rect(screen, WHITE, rect) # rect에는 center_x와 center_y의 정보가 있음. button_size의 정보도 있음.
+            pygame.draw.rect(screen, WHITE, rect) 
         else:
             # 실제 숫자 텍스트
             cell_text = game_font.render(str(idx), True, WHITE)
-            # 앞에서 가져온 버튼 rect의 center 값을 우리가 그릴 숫자 텍스트의 center 값으로 활용
+            
             text_rect = cell_text.get_rect(center=rect.center)
             screen.blit(cell_text, text_rect)
 
@@ -115,7 +115,7 @@ def setup(level):
     display_time = 5 - (level // 3)
     display_time = max(display_time, 1) # 1초 미만이면 1초로 처리
 
-    # 얼마나 많은 숫자를 보여줄 것인가?
+    # 얼마나 많은 숫자를 보여줄 것인
     number_count = (level // 3) + 5
     number_count = min(number_count, 20) # 만약 20 초과하면 20으로 처리
 
@@ -158,7 +158,7 @@ def shuffle_grid(number_count):
 # 포지션에 대응하는 버튼 확인
 def check_buttons(pos):
     global start, start_ticks
-    if start: # 게임이 시작했으면?
+    if start: 
         check_number_buttons(pos)
     elif start_button.collidepoint(pos):
         start = True
@@ -177,7 +177,7 @@ def check_number_buttons(pos):
             else: # 잘못된 숫자 클릭    
                 game_over()
             break
-# 오든 숫자를 다 맞혔다면? 다음 레벨로 넘어간다.
+# 오든 숫자를 다 맞혔다면? 다음 레벨로 넘어
     if len(number_buttons) == 0:
         start = False
         hidden = False
